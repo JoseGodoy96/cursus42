@@ -6,81 +6,106 @@
 /*   By: jgodoy-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 10:39:28 by jgodoy-m          #+#    #+#             */
-/*   Updated: 2025/04/28 11:13:25 by jgodoy-m         ###   ########.fr       */
+/*   Updated: 2025/04/30 18:26:39 by jgodoy-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_countsize(char const *s1, char const *set)
+int	ft_reversed(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	j;
-	size_t	counter;
+	int	i;
+	int	end;
+	int	r_count;
 
-	counter = 0;
 	i = 0;
-	while (s1[i] != '\0')
+	end = ft_strlen(s1) - 1;
+	r_count = 0;
+	while (end > 0 && set[i] != '\0')
 	{
-		if (s1[i] != set[0])
+		if (s1[end] == set[i])
 		{
-			j = 0;
-			while (set[j] != '\0' && (set[j] != s1[i]))
-				j++;
-			if (set[j] == '\0')
-				counter++;
+			r_count++;
+			end--;
+			i = 0;
 		}
-		i++;
+		if (s1[end] != set[i])
+			i++;
 	}
-	return (counter);
+	return (r_count);
 }
 
-char	*ft_trim(char *a, char const *s1, char const *set)
+int	ft_counttrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	int	i;
+	int	j;
+	int	count;
+	int	revers;
+	int	size;
+
+	size = ft_strlen(s1);
+	i = 0;
+	j = 0;
+	count = 0;
+	revers = ft_reversed(s1, set);
+	while (s1[i] != '\0' && set[j] != '\0')
+	{
+		if (s1[i] == set[j])
+		{
+			count++;
+			i++;
+			j = 0;
+		}
+		if (s1[i] != set[j])
+			j++;
+	}
+	if (size < (count + revers))
+		return (size);
+	return (count + revers);
+}
+
+char	*ft_trim(char const *s1, char const *set, char *a, int size)
+{
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
+	j = 0;
 	k = 0;
-	while (s1[i] != '\0')
+	while (s1[i] != '\0' && set[j] != '\0')
 	{
-		j = 0;
-		if (s1[i] != set[j])
+		if (s1[i] == set[j])
 		{
-			while (set[j] != '\0' && (set[j] != s1[i]))
-				j++;
-			if (set[j] == '\0')
-			{
-				a[k] = s1[i];
-				k++;
-			}
+			i++;
+			j = 0;
 		}
-		i++;
+		if (s1[i] != set[j])
+			j++;
 	}
-	a[i] = '\0';
+	while (k <= (size - 1))
+	{
+		a[k] = s1[i + k];
+		k++;
+	}
+	a[k] = '\0';
 	return (a);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*a;
-	size_t	size;
+	int		size;
 
-	size = ft_countsize(s1, set);
+	size = ft_strlen(s1) - ft_counttrim(s1, set);
 	a = (char *)malloc(sizeof(char) * (size + 1));
+	if (size == 0)
+	{
+		a[0] = '\0';
+		return (a);
+	}
 	if (a == NULL)
 		return (NULL);
-	ft_trim(a, s1, set);
+	ft_trim(s1, set, a, size);
 	return (a);
-}
-
-int	main(void)
-{
-	char s1[] = "lorem ipsum dolor sit amet";
-	char set[] = "l";
-	char *resultado = ft_strtrim(s1, set);
-	printf("%s", resultado);
-	free(resultado);
-	return (0);
 }
