@@ -1,14 +1,14 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgodoy-m <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jgodoy-m <jgodoy-m@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/22 15:31:07 by jgodoy-m          #+#    #+#              #
-#    Updated: 2025/05/06 14:28:48 by jgodoy-m         ###   ########.fr        #
+#    Updated: 2025/05/08 16:11:47 by jgodoy-m         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 # Nombre del archivo biblioteca
 NAME = libftprintf.a
@@ -18,7 +18,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 # Archivos fuente y archivos objeto
-SRC = 
+SRC = ft_printf.c ft_conversions.c
 OBJ = $(SRC:.c=.o)
 
 # Archivo de encabezado

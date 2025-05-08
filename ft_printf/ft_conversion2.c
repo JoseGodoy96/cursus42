@@ -1,26 +1,22 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_conversion2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgodoy-m <jgodoy-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/21 15:52:01 by jgodoy-m          #+#    #+#             */
-/*   Updated: 2025/05/08 15:57:29 by jgodoy-m         ###   ########.fr       */
+/*   Created: 2025/05/08 13:39:07 by jgodoy-m          #+#    #+#             */
+/*   Updated: 2025/05/08 13:40:11 by jgodoy-m         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int ft_print_unsigneddec()
+{}
 
-int			ft_printf(const char *str, ...);
-int			ft_print(char specifier, va_list ap);
-int			ft_print_char(int c);
-int			ft_print_str(char *str);
-long int	ft_print_decimal(int n);
+int	ft_print_lowerhex()
+{}
 
-#endif
+int	ft_print_upperhex()
+{}
