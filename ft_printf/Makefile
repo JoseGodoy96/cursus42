@@ -1,4 +1,4 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,47 +6,47 @@
 #    By: jgodoy-m <jgodoy-m@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/22 15:31:07 by jgodoy-m          #+#    #+#              #
-#    Updated: 2025/05/09 15:16:46 by jgodoy-m         ###   ########.fr        #
+#    Updated: 2025/05/09 16:20:23 by jgodoy-m         ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
-# Nombre del archivo biblioteca
+# Library file name
 NAME = libftprintf.a
 
-# Compilador y banderas de compilacion
+# Compiler and compilation flags
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-# Archivos fuente y archivos objeto
+# Source files and object files
 SRC = ft_printf.c ft_conversion.c ft_conversion2.c
 OBJ = $(SRC:.c=.o)
 
-# Archivo de encabezado
+# Header file
 INCLUDE = ft_printf.h
 
-# Crea bibliotecas y elimina archivos
+# Create libraries and delete files
 AR = ar rcs
 RM = rm -f
 
-# Indica que las siguientes reglas no son archivos reales
+# Indicates that the following rules are not real files
 .PHONY: all bonus clean fclean re
 
-# Regla que por defecto compila todo
+# Rule that compiles everything by default
 all: $(NAME)
 
-# Regla para crear la biblioteca
+# Rule to create the library
 $(NAME): $(OBJ)
 	$(AR) $@ $^
 
-# Pasar archivos .c a .o
+# Convert .c files to .o
 %.o: %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-# Regla para eliminar todos los archivos objeto creados
+# Rule to delete all created object files
 clean:
 	$(RM) $(OBJ)
 
-# Eliminar todos los archivos .o y .a
+# Delete all .o and .a files
 fclean: clean
 	$(RM) $(NAME)
 
