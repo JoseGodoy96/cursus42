@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgodoy-m <jgodoy-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 14:31:05 by jgodoy-m          #+#    #+#             */
-/*   Updated: 2025/05/08 17:37:02 by jgodoy-m         ###   ########.fr       */
+/*   Created: 2025/05/09 16:09:01 by jgodoy-m          #+#    #+#             */
+/*   Updated: 2025/05/09 16:09:05 by jgodoy-m         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -21,18 +21,18 @@ int	ft_print(char specifier, va_list ap)
 		count += ft_print_char(va_arg(ap, int));
 	else if (specifier == 's')
 		count += ft_print_str(va_arg(ap, char *));
-	//else if (specifier == 'p')
-	//	count += ft_print_pointer(va_arg(ap, void *));
+	else if (specifier == 'p')
+		count += ft_print_pointer(va_arg(ap, void *));
 	else if (specifier == 'd')
-		count += ft_print_decimal((long)va_arg(ap, int));
-	//else if (specifier == 'i')
-	//	count += ft_print_base(va_arg(ap, int));
-	//else if (specifier == 'u')
-	//	count += ft_print_unsigneddec(va_arg(ap, unsigned int));
-	//else if (specifier == 'x')
-	//	count += ft_print_lowerhex(va_arg(ap, char));
-	//else if (specifier == 'X')
-	//	count += ft_print_upperhex(va_arg(ap, char));
+		count += ft_print_decimal(va_arg(ap, int));
+	else if (specifier == 'i')
+		count += ft_print_decimal(va_arg(ap, int));
+	else if (specifier == 'u')
+		count += ft_print_decimal(va_arg(ap, unsigned int));
+	else if (specifier == 'x')
+		count += ft_print_lowerhex(va_arg(ap, unsigned int));
+	else if (specifier == 'X')
+		count += ft_print_upperhex(va_arg(ap, unsigned int));
 	else
 		count += write(1, &specifier, 1);
 	return (count);
@@ -60,10 +60,4 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(ap);
 	return (count);
-}
-
-int	main(void)
-{
-	ft_printf("hola que tal %d", -125);
-	return (0);
 }

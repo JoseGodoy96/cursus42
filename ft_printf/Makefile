@@ -6,7 +6,7 @@
 #    By: jgodoy-m <jgodoy-m@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/22 15:31:07 by jgodoy-m          #+#    #+#              #
-#    Updated: 2025/05/08 16:11:47 by jgodoy-m         ###   ########.fr        #
+#    Updated: 2025/05/09 15:16:46 by jgodoy-m         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,7 +18,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 # Archivos fuente y archivos objeto
-SRC = ft_printf.c ft_conversions.c
+SRC = ft_printf.c ft_conversion.c ft_conversion2.c
 OBJ = $(SRC:.c=.o)
 
 # Archivo de encabezado
